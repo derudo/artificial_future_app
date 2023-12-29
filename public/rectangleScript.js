@@ -35,8 +35,8 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
         textSegment.style.position = 'relative';
         //textSegment.style.left = `${currentX}px`;
         textSegment.style.top = `${currentY}px`;
-        if (Math.random() < 0.1) {
-            textSegment.style.top += getRandomInt(10);
+        if (Math.random() < 0.5) {
+            textSegment.style.top = `${currentY+getRandomInt(10)}px`;
         }
         textContainer.appendChild(textSegment);
 
@@ -51,7 +51,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
             rectDiv.style.height = `${rect.height*1.8}ex`;
             rectDiv.style.position = 'relative';
             // rectDiv.style.left = `${currentX}px`;
-            rectDiv.style.top = `${currentY}px`;
+            rectDiv.style.top = `${currentY+getRandomInt(5)}px`;
             textContainer.appendChild(rectDiv);
 
             currentX += rect.width; // Move to the right past the rectangle
@@ -67,7 +67,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
 
 function getRandomInt(max) {
 
-    if (Math.random() >= 0.5) {
+    if (Math.random() >= 0.9) {
 
         return Math.floor(Math.random() * max);
     } else {
