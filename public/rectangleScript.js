@@ -66,5 +66,12 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
 }
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+
+    if (Math.random() >= 0.5) {
+
+        return Math.floor(Math.random() * max);
+    } else {
+        return Math.floor(Math.random() * max * -1);
+
+    }
 }
