@@ -7,7 +7,7 @@ function generateLayout(textContent) {
 
     const numRects = 25; // Number of rectangles
     const rectWidth = 100;
-    const rectHeight = 100;
+    const rectHeight = 1;
     let rects = []; // Array to store rectangle data
 
     // Generate rectangle data
@@ -48,7 +48,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
             let rectDiv = document.createElement('div');
             rectDiv.classList.add('rectangle');
             rectDiv.style.width = `${rect.width-getRandomInt(90)}px`;
-            rectDiv.style.height = `${rect.height-getRandomInt(90)}px`;
+            rectDiv.style.height = `${rect.height*1.8}ex`;
             rectDiv.style.position = 'relative';
             // rectDiv.style.left = `${currentX}px`;
             rectDiv.style.top = `${currentY}px`;

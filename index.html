@@ -13,6 +13,9 @@
         background-color: black;
         border: 1px solid black;
         color: black;
+        background-color: #000000;
+        border: 3px dotted black;
+        color: black;
     }
     
     .container {
@@ -65,6 +68,7 @@
         font-weight: 12;
         font-feature-settings: "aalt", "ordn" 0, "sups";
         max-width: 70%;
+        color: red;
     }
     
     .text-container {
@@ -94,11 +98,10 @@
         }
         h1 {
             overflow-wrap: break-word;
-            color: black;
+            color: red;
             max-width: 80%;
             text-align: center;
             font-size: 32px;
-            mix-blend-mode: hard-light;
             z-index: 200;
         }
         p {
@@ -113,7 +116,6 @@
             box-sizing: border-box;
             position: relative;
             background-color: #000000;
-            border: 3px dotted black;
             color: black;
         }
     }
@@ -157,7 +159,7 @@
         }
 
         function updateContent() {
-            fetch('http://localhost:8000/getContent')
+            fetch(__dirname + '/getContent')
                 .then(response => response.json())
                 .then(data => {
                     if (hasContentChanged(data) && local_gesinnung == data.gesinnung) {

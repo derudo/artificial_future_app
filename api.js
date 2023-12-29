@@ -69,6 +69,6 @@ app.get('/getContent', (req, res) => {
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
 app.get('/', function(req, res) {
-    res.sendFile('C:/Users/maxan/OneDrive/Desktop/uni/bachelor/Api/index.html');
+    res.sendFile(__dirname + '/index.html');
     console.log(__dirname);
 });
