@@ -36,8 +36,12 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
         //textSegment.style.left = `${currentX}px`;
         textSegment.style.top = `${currentY}px`;
         if (Math.random() < 0.5) {
-            textSegment.style.top = `${currentY+getRandomInt(10)}px`;
+            textSegment.style.top = `${currentY+getRandomInt(5)}px`;
         }
+        let slntValue = getRandomFontValue(-0.4, 0.4); // Assuming slnt range -10 to 10
+        let nsssValue = getRandomFontValue(-4, 4); // Assuming NSSS range -1 to 1
+        textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`;
+
         textContainer.appendChild(textSegment);
 
         currentX += textSegment.offsetWidth + 10; // Move to the right for the next word
@@ -63,6 +67,10 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
             currentY += lineHeight;
         }
     }
+}
+
+function getRandomFontValue(min, max) {
+    return (Math.random() * (max - min) + min).toFixed(2);
 }
 
 function getRandomInt(max) {
