@@ -159,7 +159,7 @@
         }
 
         function updateContent() {
-            fetch(__dirname + '/getContent')
+            fetch('/getContent')
                 .then(response => response.json())
                 .then(data => {
                     if (hasContentChanged(data) && local_gesinnung == data.gesinnung) {
