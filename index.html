@@ -168,7 +168,7 @@
                 return;
             }
 
-            const data = contentQueue.shift(); // Get the next item from the queue
+            const data = contentQueue.shift(); // Erstes Element getten
 
             document.getElementById('headline').innerText = data.headline;
             document.getElementById('text').innerText = data.text;
@@ -182,7 +182,7 @@
                 isPrinting = true;
                 setTimeout(() => {
                     isPrinting = false;
-                    processQueue(); // Process the next item in the queue after printing
+                    processQueue(); // recursionking
                 }, 8000);
             };
 
@@ -194,12 +194,10 @@
                 .then(response => response.json())
                 .then(data => {
                     if (hasContentChanged(data) && local_gesinnung == data.gesinnung) {
-                        contentQueue.push(data); // Add new content to the queue
+                        contentQueue.push(data); // Neuen Content in die QUeue
                         if (!isPrinting) {
-                            processQueue(); // Process the queue if not currently printing
+                            processQueue(); // Druckvorgang neustarten
                         }
-                    } else {
-                        setTimeout(updateContent, 2000);
                     }
                 })
                 .catch(error => console.error('Error:', error))
