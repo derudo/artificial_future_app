@@ -167,17 +167,18 @@
             if (contentQueue.length === 0 || isPrinting) {
                 return;
             }
-
+            console.log(contentQueue.length());
             const data = contentQueue.shift(); // Erstes Element getten
 
             document.getElementById('headline').innerText = data.headline;
             document.getElementById('text').innerText = data.text;
             document.getElementById('image').src = data.imageUrl;
             gesinnung = data.gesinnung;
-            console.log("Hier wird der drucker geprüft");
+
             generateLayout(data.text);
 
             document.getElementById('image').onload = function() {
+                console.log("Drucken...");
                 window.print();
                 isPrinting = true;
                 setTimeout(() => {
@@ -196,6 +197,7 @@
                     if (hasContentChanged(data) && local_gesinnung == data.gesinnung) {
                         contentQueue.push(data); // Neuen Content in die QUeue
                         if (!isPrinting) {
+                            console.log("Druckt nicht mehrm QUeue restart");
                             processQueue(); // Druckvorgang neustarten
                         }
                     }
