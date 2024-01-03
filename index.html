@@ -167,7 +167,7 @@
             if (contentQueue.length === 0 || isPrinting) {
                 return;
             }
-            console.log(contentQueue.length());
+            console.log(contentQueue.length);
             const data = contentQueue.shift(); // Erstes Element getten
 
             document.getElementById('headline').innerText = data.headline;
