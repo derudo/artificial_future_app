@@ -4,8 +4,6 @@
 <head>
     <title>Meine Webseite</title>
     <script src="/rectangleScript.js"></script>
-
-
 </head>
 <style>
     .rectangle {
@@ -141,12 +139,6 @@
     <script>
         let local_gesinnung = 0;
         let gesinnung;
-        let lastContent = {
-            headline: "Standard-Headline",
-            text: "Standard-Text",
-            imageUrl: "standard-img-url",
-            gesinnung: "standard-gesinnung"
-        };
 
         function evil() {
             local_gesinnung = 1;
@@ -155,59 +147,54 @@
         let contentQueue = [];
         let isPrinting = false;
 
-        function hasContentChanged(newContent) {
-            return newContent.headline !== lastContent.headline ||
-                newContent.text !== lastContent.text ||
-                newContent.imageUrl !== lastContent.imageUrl;
-        }
-
-        function processQueue() {
-            if (contentQueue.length === 0 || isPrinting) {
-                return;
-            }
-            console.log(contentQueue.length);
-            const data = contentQueue.shift(); // Erstes Element getten
+        function processQueue(data) {
+            console.log("start processing");
+            console.log("Data:");
+            console.log(data);
 
             document.getElementById('headline').innerText = data.headline;
             document.getElementById('text').innerText = data.text;
             document.getElementById('image').src = data.imageUrl;
             gesinnung = data.gesinnung;
-
+            console.log("start data processing");
             generateLayout(data.text);
 
             document.getElementById('image').onload = function() {
-                console.log("Drucken...");
+                console.log("Printing...");
                 window.print();
-                isPrinting = true;
                 setTimeout(() => {
+                    console.log("stopped printing")
                     isPrinting = false;
-                    processQueue(); // recursionking
-                }, 8000);
+                }, 5000);
             };
-
-            lastContent = data;
         }
 
         function updateContent() {
-            fetch('/getContent')
+            if(!isPrinting){
+
+                var path;
+
+                if(local_gesinnung == 0){
+                    path = '/getGood';
+                } else {
+                    path = '/getEvil';
+                }
+
+                fetch(path)
                 .then(response => response.json())
                 .then(data => {
-                    if (hasContentChanged(data) && local_gesinnung == data.gesinnung) {
-                        contentQueue.push(data); // Neuen Content in die QUeue
-                        if (!isPrinting) {
-                            console.log("Druckt nicht mehrm QUeue restart");
-                            processQueue(); // Druckvorgang neustarten
-                        }
+
+                    if (data !== "") {
+                        isPrinting = true;
+                        console.log("start printing");
+                        processQueue(data); // Druckvorgang neustarten
                     }
                 })
                 .catch(error => console.error('Error:', error))
-
-            .finally(() => {
-                setTimeout(updateContent, 2000); // Schedule the next update after 2 seconds
-            });
+            }
         }
 
-        updateContent();
+        setInterval(updateContent,5000);
 
         //Check 4 neuen content
     </script>
