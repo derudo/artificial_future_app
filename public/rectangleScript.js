@@ -35,9 +35,9 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
         textSegment.style.position = 'relative';
         //textSegment.style.left = `${currentX}px`;
         textSegment.style.top = `${currentY}px`;
-        if (Math.random() < 0.5) {
-            textSegment.style.top = `${currentY+getRandomInt(5)}px`;
-        }
+        /* if (Math.random() < 0.1) {
+             textSegment.style.top = `${currentY+getRandomInt(2)}px`;
+         }*/
         let slntValue = getRandomFontValue(-0.4, 0.4); // Assuming slnt range -10 to 10
         let nsssValue = getRandomFontValue(-4, 4); // Assuming NSSS range -1 to 1
         textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`;
@@ -55,7 +55,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
             rectDiv.style.height = `${rect.height*1.8}ex`;
             rectDiv.style.position = 'relative';
             // rectDiv.style.left = `${currentX}px`;
-            rectDiv.style.top = `${currentY+getRandomInt(5)}px`;
+            rectDiv.style.top = `${currentY+getRandomInt(5)+12}px`;
             textContainer.appendChild(rectDiv);
 
             currentX += rect.width; // Move to the right past the rectangle
@@ -64,7 +64,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
         // Check if we need to move to the next line
         if (currentX > containerWidth) {
             currentX = 0; // Reset to start of the next line
-            currentY += lineHeight;
+            // currentY += lineHeight;
         }
     }
 }

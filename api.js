@@ -28,18 +28,18 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.post('/updateContent', (req, res) => {
-    if(req.body.gesinnung == 0){
+    if (req.body.gesinnung == 0) {
         goodQueue.push(req.body);
-    } else{
+    } else {
         evilQueue.push(req.body);
     }
-    
+
     res.send('Content updated');
 });
 
 // Aktueller inhalt abrufen
 app.get('/getGood', (req, res) => {
-    if(goodQueue.length > 0){
+    if (goodQueue.length > 0) {
         res.json(goodQueue.shift());
     } else {
         res.json("");
@@ -47,7 +47,7 @@ app.get('/getGood', (req, res) => {
 });
 
 app.get('/getEvil', (req, res) => {
-    if(evilQueue.length > 0){
+    if (evilQueue.length > 0) {
         res.json(evilQueue.shift());
     } else {
         res.json("");

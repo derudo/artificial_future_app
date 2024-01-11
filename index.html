@@ -4,6 +4,7 @@
 <head>
     <title>Meine Webseite</title>
     <script src="/rectangleScript.js"></script>
+
 </head>
 <style>
     .rectangle {
@@ -35,16 +36,18 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        font-family: Harber;
     }
     
     span {
         font-weight: 5;
+        font-size: 20px;
         margin: 5px;
     }
     
     p {
+        font-family: "Times New Roman";
         font-weight: 5;
+        font-size: 26px;
         flex-grow: 1.5;
     }
     
@@ -62,9 +65,9 @@
         font-size: 48px;
         text-align: center;
         font-variation-settings: "slnt" -6.94444;
-        line-height: 112.14%;
+        line-height: 120%;
         font-weight: 12;
-        font-feature-settings: "aalt", "ordn" 0, "sups";
+        font-feature-settings: "aalt", "ordn" 0, ;
         max-width: 70%;
         color: red;
     }
@@ -81,7 +84,6 @@
     }
     
     @media print {
-        body {}
         .container {
             top: 0px;
             max-height: 100vh;
@@ -104,6 +106,8 @@
             z-index: 200;
         }
         p {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
             display: none;
             position: relative;
             max-width: 70%;
@@ -170,31 +174,33 @@
         }
 
         function updateContent() {
-            if(!isPrinting){
+
+            if (!isPrinting) {
 
                 var path;
 
-                if(local_gesinnung == 0){
+                if (local_gesinnung == 0) {
                     path = '/getGood';
                 } else {
                     path = '/getEvil';
                 }
 
                 fetch(path)
-                .then(response => response.json())
-                .then(data => {
+                    .then(response => response.json())
+                    .then(data => {
 
-                    if (data !== "") {
-                        isPrinting = true;
-                        console.log("start printing");
-                        processQueue(data); // Druckvorgang neustarten
-                    }
-                })
-                .catch(error => console.error('Error:', error))
+                        if (data !== "") {
+                            isPrinting = true;
+                            console.log("start printing");
+                            processQueue(data); // Druckvorgang neustarten
+                        }
+                    })
+                    .catch(error => console.error('Error:', error))
             }
         }
 
-        setInterval(updateContent,5000);
+        setInterval(updateContent, 5000);
+
 
         //Check 4 neuen content
     </script>
