@@ -32,6 +32,11 @@
         src: url("/harber.woff2") format("woff2");
     }
     
+    @font-face {
+        font-family: "PPEditorialOld-Regular";
+        src: url("/PPEditorialOld-Regular.woff2") format("woff2");
+    }
+    
     body {
         display: flex;
         align-items: center;
@@ -39,14 +44,13 @@
     }
     
     span {
-        font-weight: 5;
+        font-family: "PPEditorialOld-Regular";
         font-size: 20px;
         margin: 5px;
     }
     
     p {
-        font-family: "Times New Roman";
-        font-weight: 5;
+        font-family: "PPEditorialOld-Regular";
         font-size: 26px;
         flex-grow: 1.5;
     }
@@ -106,7 +110,8 @@
             z-index: 200;
         }
         p {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: "PPEditorialOld-Regular";
+            src: local("PPEditorialOld-Regular"), url("PPEditorialOld-Regular.woff2");
             font-size: 18px;
             display: none;
             position: relative;
