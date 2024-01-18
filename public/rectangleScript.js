@@ -25,7 +25,7 @@ function generateLayout(textContent) {
 function positionTextSegments(words, rects, textContainer, containerWidth) {
     let currentX = 0;
     let currentY = 0;
-    let lineHeight = 2; // Example line height
+    let lineHeight = 1; // Example line height
     let rectIndex = 0; // To keep track of which rectangle to insert next
 
     for (let i = 0; i < words.length; i++) {
@@ -40,7 +40,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
          }*/
         let slntValue = getRandomFontValue(-0.4, 0.4); // Assuming slnt range -10 to 10
         let nsssValue = getRandomFontValue(-4, 4); // Assuming NSSS range -1 to 1
-        textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`;
+        //textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`;
 
         textContainer.appendChild(textSegment);
 
@@ -55,7 +55,7 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
             rectDiv.style.height = `${rect.height*1.8}ex`;
             rectDiv.style.position = 'relative';
             // rectDiv.style.left = `${currentX}px`;
-            rectDiv.style.top = `${currentY+getRandomInt(5)+12}px`;
+            rectDiv.style.top = `${currentY+getRandomInt(5)+10}px`;
             textContainer.appendChild(rectDiv);
 
             currentX += rect.width; // Move to the right past the rectangle

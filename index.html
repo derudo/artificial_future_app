@@ -33,8 +33,8 @@
     }
     
     @font-face {
-        font-family: "PPEditorialOld-Regular";
-        src: url("/PPEditorialOld-Regular.woff2") format("woff2");
+        font-family: "PPWriter-Book";
+        src: url("/PPWriter-Book.woff2") format("woff2");
     }
     
     body {
@@ -44,13 +44,15 @@
     }
     
     span {
-        font-family: "PPEditorialOld-Regular";
+        font-family: "PPWriter-Book";
         font-size: 20px;
         margin: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     
     p {
-        font-family: "PPEditorialOld-Regular";
+        font-family: "PPWriter-Book";
         font-size: 26px;
         flex-grow: 1.5;
     }
@@ -69,8 +71,8 @@
         font-size: 48px;
         text-align: center;
         font-variation-settings: "slnt" -6.94444;
-        line-height: 120%;
-        font-weight: 12;
+        line-height: 160%;
+        font-weight: 8;
         font-feature-settings: "aalt", "ordn" 0, ;
         max-width: 70%;
         color: red;
@@ -85,29 +87,32 @@
         align-content: flex-start;
         justify-content: flex-start;
         align-items: flex-start;
+        top: 20px;
     }
     
     @media print {
         .container {
             top: 0px;
-            max-height: 100vh;
         }
         button {
             display: none;
         }
         img {
+            margin-top: 40px;
             max-width: 100vw;
-            top: -50px;
             max-height: 50vh;
             flex-grow: 0.5;
+            bottom: 40px;
         }
         h1 {
+            top: 40px;
             overflow-wrap: break-word;
             color: red;
             max-width: 80%;
             text-align: center;
             font-size: 32px;
             z-index: 200;
+            bottom: 40px;
         }
         p {
             font-family: "PPEditorialOld-Regular";
