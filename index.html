@@ -17,16 +17,6 @@
         color: black;
     }
     
-    .container {
-        position: relative;
-        max-width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-    
     @font-face {
         font-family: "Harber";
         src: url("/harber.woff2") format("woff2");
@@ -92,27 +82,27 @@
     
     @media print {
         .container {
-            top: 0px;
+            top: 25px;
+            max-height: 100vh;
         }
         button {
             display: none;
         }
         img {
-            margin-top: 40px;
-            max-width: 100vw;
+            margin-top: 10px;
+            max-width: 80vw;
             max-height: 50vh;
-            flex-grow: 0.5;
             bottom: 40px;
+            page-break-inside: always;
         }
         h1 {
-            top: 40px;
             overflow-wrap: break-word;
             color: red;
             max-width: 80%;
             text-align: center;
             font-size: 32px;
             z-index: 200;
-            bottom: 40px;
+            bottom: px;
         }
         p {
             font-family: "PPEditorialOld-Regular";
@@ -122,8 +112,9 @@
             position: relative;
             max-width: 70%;
             text-align: justify;
-            top: -50px;
+            top: 50px;
             flex-grow: 2;
+            bottom: 50px;
         }
         .rectangle {
             box-sizing: border-box;
@@ -131,22 +122,30 @@
             background-color: #000000;
             color: black;
         }
+        .text-container {
+            bottom: 25px;
+            top: 0;
+            position: relative;
+        }
+        body>* {
+            transform: rotate(180deg);
+        }
     }
 </style>
 
 
 <body>
-
-    <div class="container">
-        <h1 id="headline">Standard-Headline</h1>
-        <img id="image" src="standard-img-url" alt="Bild">
-
-        <p id="text">Standard-Text</p>
-        <button onclick="evil()">Ich bin böse</button>
-
-    </div>
     <div id="rectangleContainer" class="container"></div>
     <div id="textContainer" class="text-container"></div>
+
+
+    <img id="image" src="standard-img-url" alt="Bild">
+    <h1 id="headline">Standard-Headline</h1>
+
+    <p id="text">Standard-Text</p>
+    <button onclick="evil()">Ich bin böse</button>
+
+
     <button onclick="generateLayout()">Generate Layout</button>
 
 
