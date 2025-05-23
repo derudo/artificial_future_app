@@ -1,0 +1,131 @@
+/* CSS content reconstructed based on Part 6, as original was missing */
+
+@media print {
+    .container {
+        top: 25px;
+        max-height: 100vh;
+    }
+    button {
+        display: none;
+    }
+    img {
+        margin-top: 10px;
+        max-width: 80vw;
+        max-height: 50vh;
+        bottom: 40px;
+        page-break-inside: always;
+    }
+    h1 {
+        overflow-wrap: break-word;
+        color: red;
+        max-width: 80%;
+        text-align: center;
+        font-size: 32px;
+        z-index: 200;
+        bottom: px; /* Assuming 'px' was a placeholder for a value, or a typo. Kept as is. */
+    }
+    p {
+        font-family: "PPEditorialOld-Regular";
+        src: local("PPEditorialOld-Regular"), url("PPEditorialOld-Regular.woff2");
+        font-size: 18px;
+        /* display: none; */ /* TODO: This rule was hiding paragraphs in print. Uncomment if intentional. */
+        position: relative;
+        max-width: 70%;
+        text-align: justify;
+        top: 50px;
+        flex-grow: 2;
+        bottom: 50px;
+    }
+    .rectangle {
+        box-sizing: border-box;
+        position: relative;
+        background-color: #000000;
+        color: black;
+    }
+    .text-container {
+        bottom: 25px;
+        top: 0;
+        position: relative;
+    }
+    /* TODO: This rule was inverting all content on the print page. Uncomment if intentional.
+    body > * {
+        transform: rotate(180deg);
+    }
+    */
+}
+
+/* General styles that were present in the original HTML (if any) would go here.
+   Since the original CSS was not available for extraction, only print styles are addressed. */
+    .rectangle {
+        position: absolute;
+        background-color: black;
+        border: 1px solid black;
+        color: black;
+        background-color: #000000; /* Duplicate background-color, kept as per original extraction attempt */
+        border: 3px dotted black;
+        color: black; /* Duplicate color, kept as per original extraction attempt */
+    }
+    
+    @font-face {
+        font-family: "Harber";
+        src: url("/harber.woff2") format("woff2");
+    }
+    
+    @font-face {
+        font-family: "PPWriter-Book";
+        src: url("/PPWriter-Book.woff2") format("woff2");
+    }
+    
+    body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    span {
+        font-family: "PPWriter-Book";
+        font-size: 20px;
+        margin: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+    p { /* General paragraph style, distinct from print style */
+        font-family: "PPWriter-Book";
+        font-size: 26px;
+        flex-grow: 1.5;
+    }
+    
+    img { /* General image style */
+        filter: brightness(80%) contrast(110%) grayscale(100%);
+        position: relative;
+        top: 0px;
+        z-index: -1;
+    }
+    
+    h1 { /* General h1 style */
+        position: relative;
+        font-family: "Harber";
+        src: local("Harber"), url("harber.woff2");
+        font-size: 48px;
+        text-align: center;
+        font-variation-settings: "slnt" -6.94444;
+        line-height: 160%;
+        font-weight: 8;
+        font-feature-settings: "aalt", "ordn" 0, ;
+        max-width: 70%;
+        color: red;
+        page-break-inside: avoid;
+    }
+    
+    .text-container { /* General text-container style */
+        position: relative;
+        display: flex;
+        width: 70vw;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+        top: 20px;
+    }

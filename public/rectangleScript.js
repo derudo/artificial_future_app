@@ -1,9 +1,15 @@
+// Clears and regenerates the layout of text segments and decorative rectangles.
 function generateLayout(textContent) {
     const container = document.getElementById('rectangleContainer');
     container.innerHTML = ''; // Clear previous rectangles
 
     const textContainer = document.getElementById('textContainer');
     textContainer.innerHTML = ''; // Clear previous text
+
+    if (!textContent || textContent.trim() === "") {
+        console.log("textContent is empty. Skipping layout generation.");
+        return; // Exit if no text to process
+    }
 
     const numRects = 25; // Number of rectangles
     const rectWidth = 100;
@@ -22,6 +28,7 @@ function generateLayout(textContent) {
     positionTextSegments(words, rects, textContainer, container.offsetWidth);
 }
 
+// Positions words and randomly intersperses rectangles within the text container.
 function positionTextSegments(words, rects, textContainer, containerWidth) {
     let currentX = 0;
     let currentY = 0;
@@ -38,16 +45,16 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
         /* if (Math.random() < 0.1) {
              textSegment.style.top = `${currentY+getRandomInt(2)}px`;
          }*/
-        let slntValue = getRandomFontValue(-0.4, 0.4); // Assuming slnt range -10 to 10
-        let nsssValue = getRandomFontValue(-4, 4); // Assuming NSSS range -1 to 1
-        //textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`;
+        // let slntValue = getRandomFontValue(-0.4, 0.4); // Example: For font slant variation
+        // let nsssValue = getRandomFontValue(-4, 4);     // Example: For another font variation
+        // textSegment.style.fontVariationSettings = `"slnt" ${slntValue}, "NSSS" ${nsssValue}`; // Apply if needed
 
         textContainer.appendChild(textSegment);
 
         currentX += textSegment.offsetWidth + 10; // Move to the right for the next word
 
-        // Randomly decide to insert a rectangle
-        if (Math.random() < 0.1 && rectIndex < rects.length) { // 10% chance to insert a rectangle
+        // Randomly decide to insert a rectangle (e.g., 10% chance)
+        if (Math.random() < 0.1 && rectIndex < rects.length) { 
             let rect = rects[rectIndex++];
             let rectDiv = document.createElement('div');
             rectDiv.classList.add('rectangle');
@@ -69,10 +76,12 @@ function positionTextSegments(words, rects, textContainer, containerWidth) {
     }
 }
 
+// Generates a random number within a given range, formatted to two decimal places. Useful for font variations.
 function getRandomFontValue(min, max) {
     return (Math.random() * (max - min) + min).toFixed(2);
 }
 
+// Generates a random integer up to 'max', with a high chance (90%) of being negative.
 function getRandomInt(max) {
 
     if (Math.random() >= 0.9) {
